@@ -695,7 +695,6 @@ nav.hidden {
     height: 300px;
     object-fit: cover;
     display: block;
-    border-radius: 2px;
     box-shadow: 0 8px 30px rgba(0,0,0,0.06);
 }
 
@@ -747,12 +746,12 @@ nav.hidden {
     display: inline-block;
     background: url("../icons/arrow_right.svg") no-repeat center/contain;
     opacity: 0.8;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     text-indent: -9999px; /* cache le texte existant (›) si présent dans le HTML */
 }
 
 .vs-chevron:hover {
-    transform: translateX(4px);
+    transform: translateX(8px);
 }
 
 /* decorative big symbol on the right */
