@@ -723,20 +723,16 @@ nav.hidden {
     width: 46px;
     height: 46px;
     flex: 0 0 46px;
-    border-radius: 50%;
-    background-color: #fff;
     display: inline-block;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    background-size: 60% 60%;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 /* replace backgrounds with your SVG icons (place icons in assets/icons/) */
-.vs-icon.icon-family { background-image: url("../icons/family.svg"); }
-.vs-icon.icon-group  { background-image: url("../icons/group.svg"); }
-.vs-icon.icon-class  { background-image: url("../icons/class.svg"); }
-.vs-icon.icon-access { background-image: url("../icons/wheelchair.svg"); }
+.vs-icon.icon-family { background-image: url("../icons/icon1voussouhaitez.svg"); }
+.vs-icon.icon-group  { background-image: url("../icons/icon2voussouhaitez.svg"); }
+.vs-icon.icon-class  { background-image: url("../icons/icon3voussouhaitez.svg"); }
+.vs-icon.icon-access { background-image: url("../icons/icon4voussouhaitez.svg"); }
 
 .vs-text {
     color: var(--color-texte);
@@ -744,10 +740,19 @@ nav.hidden {
     flex: 1 1 auto;
 }
 .vs-chevron {
-    color: var(--color-texte);
-    font-size: 22px;
-    flex: 0 0 20px;
-    opacity: 0.6;
+    /* remplace le caractère par une icône SVG */
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+    display: inline-block;
+    background: url("../icons/arrow_right.svg") no-repeat center/contain;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    text-indent: -9999px; /* cache le texte existant (›) si présent dans le HTML */
+}
+
+.vs-chevron:hover {
+    transform: translateX(4px);
 }
 
 /* decorative big symbol on the right */
@@ -784,4 +789,5 @@ nav.hidden {
     .stat-number { font-size: 36px; }
     .vs-text { font-size: 16px; }
     .vs-icon { width: 40px; height: 40px; flex: 0 0 40px; }
+    .vs-chevron { width: 20px; height: 20px; flex: 0 0 20px; }
 }
