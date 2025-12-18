@@ -217,8 +217,27 @@ nav ul li a:hover {
     transition: all 0.3s ease-in-out;
 }
 
+html {
+    scrollbar-width: none;
+}
+
 body {
     background-color: var(--color-background);
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    box-sizing: border-box;
+}
+
+/* Fix overflow horizontal and ensure media stays inside containers */
+html, body {
+    overflow-x: hidden; /* masque le scroll horizontal */
+}
+
+/* protéger les images/éléments fixes contre le débordement */
+img, video, svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 nav ul li.nav-right a.nav-tarifs:hover {
@@ -714,9 +733,7 @@ nav.hidden {
     padding: 8px 16px;
     background: transparent;
     cursor: pointer;
-    transition: all 15s ease;
 }
-.vous-list li:hover { background: rgba(0,0,0,0.03); }
 
 .vs-icon {
     width: 46px;
@@ -793,8 +810,195 @@ nav.hidden {
 
 footer {
     width: 100%;
-    height: 500px;
+    height: 512px;
     background-image: url(../images/footer_bg.png);
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
+    padding: 4rem 6rem 2rem;
+    color: #fff;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-brand {
+    margin-bottom: 3rem;
+}
+
+.footer-logo {
+    height: 192px;
+    width: auto;
+}
+
+/* 3 colonnes de liens */
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+    margin-bottom: 4rem;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-col a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 300;
+    transition: color 0.3s;
+}
+
+.footer-col a:hover {
+    color: var(--color-primaire);
+}
+
+/* Section info : 3 colonnes */
+.footer-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 3rem;
+}
+
+.footer-horaires h3,
+.footer-coordonnees h3,
+.footer-newsletter h3 {
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+.footer-horaires p,
+.footer-coordonnees p {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.footer-horaires ul {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0 0;
+}
+
+.footer-horaires ul li {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+}
+
+.footer-phone {
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    margin: 1rem 0 !important;
+}
+
+.contact-title {
+    margin-top: 2rem !important;
+}
+
+.footer-social {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.footer-social a {
+    display: inline-block;
+    transition: transform 0.3s;
+}
+
+.footer-social a:hover {
+    transform: translateY(-3px);
+}
+
+.footer-social svg {
+    width: 40px;
+    height: 40px;
+}
+
+/* Newsletter et logo ville */
+.footer-newsletter {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-newsletter {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background-color: #fff;
+    color: var(--color-texte);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 18px;
+    transition: all 0.3s;
+    border: 2px solid #fff;
+    width: fit-content;
+    margin-bottom: 2rem;
+}
+
+.btn-newsletter:hover {
+    background-color: transparent;
+    color: #fff;
+}
+
+.logo-ville {
+    height: 70px;
+    width: auto;
+}
+
+/* Mentions légales */
+.footer-legal {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-legal p {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    footer {
+        padding: 3rem 3rem 2rem;
+    }
+    
+    .footer-links,
+    .footer-info {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 640px) {
+    footer {
+        padding: 2rem 1.5rem 1.5rem;
+    }
+    
+    .footer-logo,
+    .logo-ville {
+        height: 60px;
+    }
+    
+    .footer-col a {
+        font-size: 16px;
+    }
+    
+    .footer-horaires h3,
+    .footer-coordonnees h3,
+    .footer-newsletter h3 {
+        font-size: 18px;
+    }
 }
