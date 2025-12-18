@@ -1,9 +1,11 @@
+/* Variables globales */
 :root {
     --color-texte: #352D27;
     --color-primaire: #C49062;
     --color-background: #fcfcfc;
 }
 
+/* Reset et base */
 * {
     padding: 0;
     margin: 0;
@@ -11,6 +13,25 @@
     font-family: "Bricolage Grotesque", sans-serif;
 }
 
+html {
+    scrollbar-width: none;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--color-background);
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    overflow-x: hidden;
+}
+
+img, video, svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Navigation principale */
 nav {
     position: fixed;
     background-color: transparent;
@@ -20,39 +41,52 @@ nav {
     width: 100%;
     left: 0;
     right: 0;
-    box-sizing: border-box;
     z-index: 100;
     top: 0;
     transition: all 1s ease-in-out;
 }
 
+nav.hidden {
+    transform: translateY(-120%);
+    opacity: 0;
+    pointer-events: none;
+}
+
 .fondu-navbar {
-    content: "";
     position: fixed;
     transition: all 1s ease-in-out;
     top: 0;
     left: 0;
     width: 100%;
     height: 50%;
-    background: #F5F5F7;
     background: linear-gradient(0deg, rgba(245, 245, 247, 0) 50%, rgba(37, 25, 14, 1) 100%);
-    z-index: 90;            /* lowered so it doesn't cover interactive elements */
-    pointer-events: none;  /* allow clicks/hover to pass through */
+    z-index: 90;
+    pointer-events: none;
 }
 
+.fondu-navbar.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+/* Header fondu décoratif */
 .fondu {
-    content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 80%;
-    background: #F5F5F7;
     background: linear-gradient(0deg, rgba(245, 245, 247, 0) 0%, rgba(37, 25, 14, 1) 100%);
-    z-index: 90;            /* lowered so it doesn't cover interactive elements */
-    pointer-events: none;  /* allow clicks/hover to pass through */
+    z-index: 90;
+    pointer-events: none;
 }
 
+.fondu.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+/* Structure des listes de nav */
 nav ul {
     list-style: none;
     display: flex;
@@ -60,8 +94,6 @@ nav ul {
     align-items: center; 
     width: 100%;
     justify-content: flex-start;
-    margin: 0;
-    padding: 0;
 }
 
 nav ul li.nav-right {
@@ -99,12 +131,54 @@ nav ul li a:hover {
     color: var(--color-primaire);
 }
 
+/* Tarifs / icône ticket */
+nav ul li.nav-right a.nav-tarifs {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.25rem 0.5rem;
+}
+
+nav ul li.nav-right a.nav-tarifs:hover {
+    color: var(--color-primaire);
+}
+
+nav ul li.nav-right .tarifs-text {
+    display: inline-block;
+    font-size: 26px;
+}
+
+nav ul li.nav-right .icon-ticket--mask {
+    width: 2rem;
+    height: 2rem;
+}
+
+.icon-ticket--mask {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: currentColor;
+    -webkit-mask: url("../images/ticket.svg") no-repeat center/contain;
+    mask: url("../images/ticket.svg") no-repeat center/contain;
+    pointer-events: none;
+    vertical-align: middle;
+}
+
+@media (max-width: 640px) {
+    nav ul li.nav-right .tarifs-text { 
+        display: none; 
+    }
+}
+
+/* Section accueil */
 .accueil {
-    position: relative; /* nécessaire pour que .container absolute soit relatif à .accueil et que z-index fonctionne */
+    position: relative;
     height: 85vh;
     padding: 4rem 2rem;
-    background-image: url("../images/accueil.webp"); /* chemin relatif corrigé */
-    object-fit: cover;
+    background-image: url("../images/accueil.webp");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -116,15 +190,13 @@ nav ul li a:hover {
     padding-left: 1.5rem;
     padding-bottom: 2rem;
     padding-right: 10%;
-    background-image: url("../images/bg_block_accueil.svg"); /* chemin corrigé */
+    background-image: url("../images/bg_block_accueil.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover; 
     right: 0;
     top: 80%;
-    margin: 0 auto;
     color: #fff;
-    text-decoration: none;
     z-index: 90;
 }
 
@@ -141,23 +213,14 @@ nav ul li a:hover {
     margin: 0 0 1rem 0;
     font-weight: 500;
 }
+
 .accueil .container p {
     font-size: 20px;
     display: flex;
-    flex-direction: row;
     align-items: center; 
     gap: 0.6rem;        
-    font-size: 1.2rem;
     font-weight: 300;
 }  
-
-.accueil .container a {
-    padding: 0.5rem 1.3rem;
-    background-color: var(--color-primaire);
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
-}
 
 .accueil .container .actions {
     display: flex;
@@ -179,13 +242,14 @@ nav ul li a:hover {
     border-radius: 50%;
 }
 
+/* Boutons récurrents */
 .bouton a.btn-tarifs {
     border: solid 2px transparent;
     display: inline-flex;
     align-items: center;
-    gap: 8px;       /* espace entre icône et texte */
+    gap: 8px;
     padding: 0.5rem 1rem;
-    color: #fff; /* couleur par défaut */
+    color: #fff;
     background-color: var(--color-primaire);
     text-decoration: none;
     transition: all 0.3s ease-in-out;
@@ -197,121 +261,7 @@ nav ul li a:hover {
     border: solid 2px #000000;
 }
 
-.bouton a.btn-tarifs .icon-ticket {
-    width: 1.5rem;
-    height: 1.5rem;
-    display: inline-block;
-    flex-shrink: 0;
-    vertical-align: middle;
-    transition: all 0.3s ease-in-out;
-}
-
-/* si le SVG inline contient des <path> sans fill, forcer l'usage de currentColor */
-.bouton a.btn-tarifs .icon-ticket path {
-    fill: currentColor;
-}
-
-/* remplacement du filtre hover (rapide, approximatif) */
-.bouton a.btn-tarifs:hover img.icon-ticket  {
-    filter: invert(100%) brightness(0) saturate(100%);
-    transition: all 0.3s ease-in-out;
-}
-
-html {
-    scrollbar-width: none;
-}
-
-body {
-    background-color: var(--color-background);
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    box-sizing: border-box;
-}
-
-/* Fix overflow horizontal and ensure media stays inside containers */
-html, body {
-    overflow-x: hidden; /* masque le scroll horizontal */
-}
-
-/* protéger les images/éléments fixes contre le débordement */
-img, video, svg {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-nav ul li.nav-right a.nav-tarifs:hover {
-    color: var(--color-primaire);
-}
-
-.navbar .icon-ticket {
-    width: 2rem;
-    height: 2rem;
-    display: inline-block;
-    flex-shrink: 0;
-}
-
-/* lien tarfis + icône dans la navbar (droite) */
-nav ul li.nav-right a.nav-tarifs {
-    display: inline-flex;
-    align-items: center;
-    gap: 16px;
-    color: #fff;
-    text-decoration: none;
-    font-size: 1rem;
-    padding: 0.25rem 0.5rem;
-}
-
-/* cache le texte si tu veux uniquement l'icône visible sur petites largeurs */
-nav ul li.nav-right .tarifs-text {
-    display: inline-block;
-    font-size: 26px;
-}
-
-/* taille de l'icône dans la navbar */
-nav ul li.nav-right img.icon-ticket {
-    width: 2rem;
-    height: 2rem;
-    display: inline-block;
-    vertical-align: middle;
-    transition: filter 0.25s ease;
-}
-
-/* recolorer l'icône au hover (si SVG externe) — ajuste le filtre si nécessaire */
-nav ul li.nav-right a.nav-tarifs:hover img.icon-ticket {
-    filter: invert(35%) sepia(60%) saturate(500%) hue-rotate(10deg) brightness(95%) contrast(90%);
-}
-
-/* icône via mask : prend la couleur currentColor (exact au hover) */
-.icon-ticket--mask {
-    display: inline-block;
-    width: 1.5rem;
-    height: 1.5rem;
-    background-color: currentColor;
-    -webkit-mask: url("../images/ticket.svg") no-repeat center/contain; /* chemin corrigé */
-    mask: url("../images/ticket.svg") no-repeat center/contain;
-    -webkit-mask-size: contain;
-    mask-size: contain;
-    pointer-events: none;
-    vertical-align: middle;
-}
-
-/* taille spécifique dans la navbar */
-nav ul li.nav-right .icon-ticket--mask {
-    width: 2rem;
-    height: 2rem;
-}
-
-/* si tu conservais aussi <img>, le cacher au profit du mask */
-.bouton a.btn-tarifs img.icon-ticket,
-nav ul li.nav-right img.icon-ticket {
-    display: none;
-}
-
-@media (max-width: 640px) {
-    nav ul li.nav-right .tarifs-text { display: none; }
-}
-
+/* Section À la une */
 .la-une .container {
     width: 100%;
     max-width: none; 
@@ -332,8 +282,7 @@ nav ul li.nav-right img.icon-ticket {
     max-width: 1076px;
     width: 100%;
     margin-left: auto;
-    margin-right: auto; 
-    box-sizing: border-box;
+    margin-right: auto;
 }
 
 .la-une-grid {
@@ -351,13 +300,16 @@ article.featured {
 .featured figure {
     margin: 0 0 1rem 0;
     overflow: hidden;
+    position: relative;
 }
+
 .featured figure img {
     display: block;
     width: 440px;
     height: 434px;
     object-fit: cover;
 }
+
 .featured h3 {
     font-size: 32px;
     font-weight: 400;
@@ -365,6 +317,7 @@ article.featured {
     margin: 1rem 0 0.5rem 0;
     color: #0d0d0d;
 }
+
 .featured p {
     color: #222;
     line-height: 1.6;
@@ -373,28 +326,34 @@ article.featured {
     width: 80%;
 }
 
+/* Liste latérale */
 .side-list {
     display: flex;
     flex-direction: column;
     gap: 32px;
 }
+
 .side-item {
     display: flex;
     gap: 25px;
     align-items: flex-start;
+    position: relative;
 }
+
 .side-item img {
     width: 200px;
     height: 200px;
     object-fit: cover;
     flex-shrink: 0;
 }
+
 .side-item .side-content h3 {
     font-size: 32px;
     font-weight: 400;
     margin: 0 0 8px 0;
     color: #0d0d0d;
 }
+
 .side-item .side-content p {
     margin: 0;
     font-size: 14px;
@@ -403,8 +362,7 @@ article.featured {
     line-height: 1.4;
 }
 
-
-/* badge pill */
+/* Badges petites étiquettes */
 .badge {
     position: absolute;
     top: 10px;
@@ -420,6 +378,7 @@ article.featured {
     font-weight: 300;
     box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     pointer-events: none;
+    z-index: 1;
 }
 
 .badge + .badge {
@@ -428,31 +387,13 @@ article.featured {
     margin-left: 15px;
 }
 
-.img-wrap {
-    position: relative;
-    overflow: hidden;
-    display: block;
-}
-
-.img-wrap .badge {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: -1;
-    pointer-events: none;
-}
-
-.img-wrap .badge + .badge {
-    left: auto;
-    transform: translateX(110%);
-    margin-left: 8px;
-}
-
 @media (max-width: 900px) {
-    .badge { font-size: 11px; padding: 3px 6px; top: 8px; left: 8px; }
-}
-
-@media (max-width: 900px) {
+    .badge { 
+        font-size: 11px; 
+        padding: 3px 6px; 
+        top: 8px; 
+        left: 8px; 
+    }
     .la-une-grid {
         grid-template-columns: 1fr;
         gap: 16px;
@@ -462,30 +403,7 @@ article.featured {
     }
 }
 
-.featured figure,
-.la-une-grid figure,
-.side-item {
-    position: relative;
-    overflow: hidden;
-}
-
-.badge {
-    z-index: 1;
-}
-
-nav.hidden {
-    transform: translateY(-120%);
-    opacity: 0;
-    pointer-events: none;
-}
-
-.fondu-navbar.hidden,
-.fondu.hidden {
-    transform: translateY(-100%);
-    opacity: 0;
-    pointer-events: none;
-}
-
+/* Déco trompe-l'œil */
 .la-une .trompe-image {
     width: 600px;
     height: auto;
@@ -494,10 +412,10 @@ nav.hidden {
     bottom: -55%;
     right: 0;
     z-index: 10;
-    transform: rotate(0deg);
     border: none;
 }
 
+/* Section Découvrir */
 .découvrir {
     position: relative;
     padding: 6.5rem 0;
@@ -516,18 +434,15 @@ nav.hidden {
     z-index: 3;
 }
 
-/* container identique à la-une */
 .découvrir .container {
     width: 100%;
     max-width: 1200px;
     margin: auto;
     padding: 0 48px;
-    box-sizing: border-box;
     position: relative;
     z-index: 3;
 }
 
-/* grille image gauche / texte droite */
 .decouvrir-grid {
     display: grid;
     grid-template-columns: 1fr 350px;
@@ -535,7 +450,12 @@ nav.hidden {
     align-items: flex-start;
 }
 
-/* image principale */
+.découvrir .decouvrir-image {
+    position: relative;
+    z-index: 3;
+    overflow: visible;
+}
+
 .decouvrir-image img {
     display: block;
     width: 672px;
@@ -543,21 +463,39 @@ nav.hidden {
     object-fit: cover;
     border-radius: 2px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    position: relative;
+    z-index: 2;
 }
 
-/* colonne de texte */
+/* Décor background pour la section */
+.découvrir .decouvrir-image::before {
+    content: "";
+    position: absolute;
+    left: -300px;
+    top: 50%;
+    transform: translateY(-50%) rotate(180deg);
+    width: 500px;
+    height: 700px;
+    background: url("../images/bg_symbole.png") no-repeat center/contain;
+    pointer-events: none;
+    opacity: 1;
+    z-index: 1;
+}
+
 .decouvrir-content h2 {
     font-size: 32px;
     font-weight: 400;
     margin: 0 0 32px 0;
     color: var(--color-texte);
 }
+
 .decouvrir-content .lead {
     margin-bottom: 32px;
     color: #222;
     line-height: 1.5;
     font-weight: 300;
 }
+
 .decouvrir-content p {
     color: #222;
     line-height: 1.5;
@@ -566,7 +504,7 @@ nav.hidden {
     font-size: 16px;
 }
 
-/* bouton style bordé (comme sur la maquette) */
+/* Bouton type "tarifs" (utilisé ailleurs aussi) */
 .découvrir .bouton .btn-tarifs {
     background: transparent;
     color: var(--color-texte);
@@ -577,62 +515,13 @@ nav.hidden {
     display: inline-block;
     text-decoration: none;
 }
+
 .découvrir .bouton .btn-tarifs:hover {
     background: #222;
     color: #fff;
     border-color: #222;
 }
 
-/* décor circulaire côté gauche (optionnel) : utilisez [bg_symbole.png](http://_vscodecontentref_/2) si présent */
-.découvrir::before {
-    content: "";
-    position: absolute;
-    left: -8%;
-    top: 10%;
-    width: 420px;
-    height: 420px;
-    background: url("assets/images/bg_symbole.png") no-repeat center/contain;
-    opacity: 1;
-    pointer-events: none;
-    z-index: 1;
-}
-
-/* s'assurer que les éléments principaux sont au-dessus du décor */
-.découvrir .container,
-.decouvrir-title,
-.decouvrir-grid > * {
-    position: relative;
-    z-index: 3;
-}
-
-/* duplicate du bg_symbole à gauche de l'image dans la section Découvrir */
-.découvrir .decouvrir-image {
-    position: relative;
-    z-index: 3; /* image au-dessus du décor */
-    overflow: visible;
-}
-
-.découvrir .decouvrir-image::before {
-    content: "";
-    position: absolute;
-    left: -300px;        /* ajuste la distance à gauche de l'image */
-    top: 50%;
-    transform: translateY(-50%) rotate(180deg);
-    width: 500px;        /* taille du symbole dupliqué */
-    height: 700px;
-    background: url("../images/bg_symbole.png") no-repeat center/contain;
-    pointer-events: none;
-    opacity: 1;
-    z-index: 1;          /* derrière l'image mais devant le fond */
-}
-
-/* s'assurer que l'image reste bien au-dessus */
-.découvrir .decouvrir-image img {
-    position: relative;
-    z-index: 2;
-}
-
-/* responsive */
 @media (max-width: 900px) {
     .decouvrir-title {
         font-size: 48px;
@@ -646,10 +535,9 @@ nav.hidden {
     .decouvrir-image img {
         height: 320px;
     }
-    .découvrir::before { display: none; }
 }
 
-/* --- section4 : stats + "Vous Souhaitez" --- */
+/* Section 4 - stats et vous souhaitez */
 .section4 {
     position: relative;
     padding: 6rem 0 8rem;
@@ -657,7 +545,6 @@ nav.hidden {
     overflow: visible;
 }
 
-/* stats row */
 .stats-row {
     display: flex;
     gap: 40px;
@@ -666,11 +553,12 @@ nav.hidden {
     max-width: 1180px;
     margin: 0 auto 48px;
     padding: 0 48px;
-    box-sizing: border-box;
 }
+
 .stat {
     min-width: 200px;
 }
+
 .stat-number {
     font-size: 64px;
     color: var(--color-primaire);
@@ -678,19 +566,18 @@ nav.hidden {
     line-height: 1;
     margin-bottom: 8px;
 }
+
 .stat-label {
     color: var(--color-texte);
     font-size: 32px;
     font-weight: 400;
 }
 
-/* "Vous Souhaitez" block */
 .vous-souhaitez {
     position: relative;
     max-width: 1180px;
     margin: 0 auto;
     padding: 0 48px;
-    box-sizing: border-box;
 }
 
 .vs-title {
@@ -700,7 +587,6 @@ nav.hidden {
     margin: 150px 0 28px 0;
 }
 
-/* left image / right list grid */
 .vous-grid {
     display: grid;
     grid-template-columns: 520px 1fr;
@@ -708,7 +594,6 @@ nav.hidden {
     align-items: start;
 }
 
-/* image */
 .vous-image img {
     width: 100%;
     height: 300px;
@@ -717,7 +602,6 @@ nav.hidden {
     box-shadow: 0 8px 30px rgba(0,0,0,0.06);
 }
 
-/* list */
 .vous-list {
     list-style: none;
     display: flex;
@@ -726,6 +610,7 @@ nav.hidden {
     padding: 0;
     margin: 0;
 }
+
 .vous-list li {
     display: flex;
     align-items: center;
@@ -735,6 +620,7 @@ nav.hidden {
     cursor: pointer;
 }
 
+/* icônes pour la liste */
 .vs-icon {
     width: 46px;
     height: 46px;
@@ -744,19 +630,29 @@ nav.hidden {
     background-position: center;
 }
 
-/* replace backgrounds with your SVG icons (place icons in assets/icons/) */
-.vs-icon.icon-family { background-image: url("../icons/icon1voussouhaitez.svg"); }
-.vs-icon.icon-group  { background-image: url("../icons/icon2voussouhaitez.svg"); }
-.vs-icon.icon-class  { background-image: url("../icons/icon3voussouhaitez.svg"); }
-.vs-icon.icon-access { background-image: url("../icons/icon4voussouhaitez.svg"); }
+.vs-icon.icon-family { 
+    background-image: url("../icons/icon1voussouhaitez.svg"); 
+}
+
+.vs-icon.icon-group  { 
+    background-image: url("../icons/icon2voussouhaitez.svg"); 
+}
+
+.vs-icon.icon-class  { 
+    background-image: url("../icons/icon3voussouhaitez.svg"); 
+}
+
+.vs-icon.icon-access { 
+    background-image: url("../icons/icon4voussouhaitez.svg"); 
+}
 
 .vs-text {
     color: var(--color-texte);
     font-size: 20px;
     flex: 1 1 auto;
 }
+
 .vs-chevron {
-    /* remplace le caractère par une icône SVG */
     width: 24px;
     height: 24px;
     flex: 0 0 24px;
@@ -764,14 +660,14 @@ nav.hidden {
     background: url("../icons/arrow_right.svg") no-repeat center/contain;
     opacity: 0.8;
     transition: all 0.2s ease;
-    text-indent: -9999px; /* cache le texte existant (›) si présent dans le HTML */
+    text-indent: -9999px;
 }
 
 .vs-chevron:hover {
     transform: translateX(8px);
 }
 
-/* decorative big symbol on the right */
+/* grand symbole décoratif */
 .section4-symbol {
     position: absolute;
     right: -100px;
@@ -784,30 +680,48 @@ nav.hidden {
     z-index: 1;
 }
 
-/* ensure content sits above decor */
-.vous-souhaitez .container,
-.vs-title,
-.vous-grid > * {
-    position: relative;
-    z-index: 3;
-}
-
-/* responsive */
 @media (max-width: 1000px) {
-    .vous-grid { grid-template-columns: 1fr; gap: 24px; }
-    .vous-image img { height: 240px; }
-    .stats-row { flex-direction: column; align-items: flex-start; gap: 18px; margin-bottom: 32px; }
-    .section4-symbol { display: none; }
-    .vs-title { font-size: 36px; }
+    .vous-grid { 
+        grid-template-columns: 1fr; 
+        gap: 24px; 
+    }
+    .vous-image img { 
+        height: 240px; 
+    }
+    .stats-row { 
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: 18px; 
+        margin-bottom: 32px; 
+    }
+    .section4-symbol { 
+        display: none; 
+    }
+    .vs-title { 
+        font-size: 36px; 
+    }
 }
 
 @media (max-width: 640px) {
-    .stat-number { font-size: 36px; }
-    .vs-text { font-size: 16px; }
-    .vs-icon { width: 40px; height: 40px; flex: 0 0 40px; }
-    .vs-chevron { width: 20px; height: 20px; flex: 0 0 20px; }
+    .stat-number { 
+        font-size: 36px; 
+    }
+    .vs-text { 
+        font-size: 16px; 
+    }
+    .vs-icon { 
+        width: 40px; 
+        height: 40px; 
+        flex: 0 0 40px; 
+    }
+    .vs-chevron { 
+        width: 20px; 
+        height: 20px; 
+        flex: 0 0 20px; 
+    }
 }
 
+/* Footer principal */
 footer {
     width: 100%;
     background-image: url(../images/footer_bg.png);
@@ -821,183 +735,234 @@ footer {
 .footer-container {
     max-width: 1400px;
     margin: 0 auto;
+    padding: 0 48px;
+}
+
+.footer-top {
+    display: flex;
+    align-items: center;
+    gap: 48px;
 }
 
 .footer-brand {
-    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex: 0 0 auto;
 }
 
+/* logo taille confortable */
+.footer-brand img,
 .footer-logo {
-    height: 192px;
+    height: 200px;
     width: auto;
+    display: block;
 }
 
-/* 3 colonnes de liens */
+/* colonnes de liens */
 .footer-links {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 4rem;
-    margin-bottom: 4rem;
+    margin-left: auto;
+    display: flex;
+    gap: 3.5rem;
+    align-items: flex-start;
+    justify-content: flex-end;
+    flex: 1 1 auto;
+    flex-wrap: nowrap;
 }
 
-.footer-col {
+.footer-links .footer-col {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.6rem;
+    min-width: 100px;
 }
 
-.footer-col a {
+footer a {
     color: #fff;
     text-decoration: none;
-    font-size: 18px;
+    display: inline-block;
+}
+
+/* liens empilés */
+.footer-links .footer-col a {
+    display: block;
+    font-size: 20px;
     font-weight: 300;
-    transition: color 0.3s;
+    margin-bottom: 14px;
+    line-height: 1.2;
+    white-space: normal;
 }
 
-.footer-col a:hover {
-    color: var(--color-primaire);
-}
-
-/* Section info : 3 colonnes */
-.footer-info {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 4rem;
-    margin-bottom: 3rem;
-}
-
-.footer-horaires h3,
-.footer-coordonnees h3,
-.footer-newsletter h3 {
-    font-size: 22px;
-    font-weight: 400;
-    margin-bottom: 1rem;
-}
-
-.footer-horaires p,
-.footer-coordonnees p {
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 1.6;
-    margin-bottom: 0.5rem;
-}
-
-.footer-horaires ul {
-    list-style: none;
-    padding: 0;
-    margin: 1.5rem 0 0 0;
-}
-
-.footer-horaires ul li {
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 1.8;
-    margin-bottom: 0.75rem;
-}
-
-.footer-phone {
-    font-size: 18px !important;
-    font-weight: 400 !important;
-    margin: 1rem 0 !important;
+.footer-links .footer-col a:hover {
+    transform: translateX(4px);
+    color: #ffffff;
 }
 
 .contact-title {
-    margin-top: 2rem !important;
+    margin-top: 2em;
 }
 
+/* zone info (horaires, coordonnées, newsletter) */
+.footer-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    align-items: start;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    margin-top: 1.5rem;
+}
+
+.footer-info h3 {
+    margin-bottom: 0.8rem;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.footer-info p, 
+.footer-info li {
+    color: rgba(255,255,255,0.9);
+    font-weight: 200;
+    line-height: 1.5;
+    font-size: 16px;
+}
+
+/* ligne légale */
+.footer-legal {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    text-align: center;
+    color: rgba(255,255,255,0.75);
+    font-size: 14px;
+}
+
+/* icônes réseaux */
 .footer-social {
     display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
+    gap: 14px;
+    align-items: center;
+    margin-top: 12px;
 }
 
-.footer-social a {
-    display: inline-block;
-    transition: transform 0.3s;
-}
-
-.footer-social a:hover {
-    transform: translateY(-3px);
-}
-
-.footer-social svg {
-    width: 40px;
-    height: 40px;
-}
-
-/* Newsletter et logo ville */
-.footer-newsletter {
-    display: flex;
-    flex-direction: column;
-}
-
-.btn-newsletter {
-    display: inline-block;
-    padding: 0.75rem 2rem;
-    background-color: #fff;
-    color: var(--color-texte);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 18px;
-    transition: all 0.3s;
-    border: 2px solid #fff;
-    width: fit-content;
-    margin-bottom: 2rem;
-}
-
-.btn-newsletter:hover {
-    background-color: transparent;
-    color: #fff;
-}
-
-.logo-ville {
+.footer-social img {
+    width: 44px;
     height: auto;
-    width: auto;
+    display: block;
 }
 
-/* Mentions légales */
-.footer-legal {
-    text-align: center;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+/* horaires détaillées */
+.footer-horaires h3 {
+    font-size: 22px;
+    margin-bottom: 0.6rem;
+    font-weight: 400;
 }
 
-.footer-legal p {
-    font-size: 14px;
+.footer-horaires p {
+    margin: 0 0 0.8rem 0;
+    color: rgba(255,255,255,0.92);
+    font-size: 16px;
     font-weight: 300;
-    color: rgba(255, 255, 255, 0.8);
+    max-width: 420px;
 }
 
-/* Responsive */
+.footer-horaires ul {
+    list-style: disc;
+    list-style-position: inside;
+    margin: 0;
+    padding: 0;
+    color: rgba(255,255,255,0.9);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.footer-horaires ul li {
+    margin-bottom: 12px;
+    font-weight: 300;
+}
+
+/* bouton newsletter (style type "réserver maintenant") */
+.footer-newsletter .btn-newsletter {
+    background: transparent;
+    color: var(--color-background);
+    border: 1.6px solid var(--color-background);
+    padding: 10px 18px;
+    font-weight: 500;
+    transition: all 0.18s ease;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.footer-newsletter .btn-newsletter:hover,
+.footer-newsletter .btn-newsletter:focus {
+    background: var(--color-background);
+    color: #000000;
+    border-color: #222;
+}
+
+.footer-newsletter .logo-ville {
+    display: block;
+    margin-top: 18px;
+    max-width: 260px;
+    height: auto;
+}
+
 @media (max-width: 1024px) {
-    footer {
-        padding: 3rem 3rem 2rem;
+    .footer-top { 
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: 18px; 
     }
-    
-    .footer-links,
-    .footer-info {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+    .footer-links { 
+        flex-wrap: wrap; 
+        justify-content: flex-start; 
+        margin-left: 0; 
+        gap: 2rem; 
+    }
+    .footer-links .footer-col { 
+        min-width: 220px; 
+    }
+    .footer-brand img, 
+    .footer-logo { 
+        height: 100px; 
+    }
+    .footer-info { 
+        grid-template-columns: 1fr; 
+        gap: 24px; 
+    }
+    .footer-horaires ul li { 
+        font-size: 15px; 
+    }
+    .btn-newsletter { 
+        font-size: 18px; 
+        padding: 12px 20px; 
     }
 }
 
 @media (max-width: 640px) {
-    footer {
-        padding: 2rem 1.5rem 1.5rem;
+    .footer-brand img, 
+    .footer-logo { 
+        height: 72px; 
     }
-    
-    .footer-logo,
-    .logo-ville {
-        height: 60px;
+    .footer-links { 
+        gap: 1.2rem; 
     }
-    
-    .footer-col a {
-        font-size: 16px;
+    .footer-links .footer-col a { 
+        font-size: 16px; 
+        margin-bottom: 10px; 
     }
-    
-    .footer-horaires h3,
-    .footer-coordonnees h3,
-    .footer-newsletter h3 {
-        font-size: 18px;
+    .footer-legal { 
+        font-size: 13px; 
+    }
+    .footer-social img { 
+        width: 36px; 
+    }
+    .footer-horaires ul li { 
+        font-size: 14px; 
+    }
+    .btn-newsletter { 
+        width: auto; 
+        padding: 10px 16px; 
+        font-size: 16px; 
     }
 }
