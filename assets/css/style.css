@@ -643,34 +643,42 @@ nav.hidden {
     display: flex;
     gap: 40px;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     max-width: 1180px;
     margin: 0 auto 48px;
     padding: 0 48px;
     box-sizing: border-box;
 }
 .stat {
-    min-width: 180px;
+    min-width: 200px;
 }
 .stat-number {
-    font-size: 48px;
+    font-size: 64px;
     color: var(--color-primaire);
-    font-weight: 600;
+    font-weight: 400;
     line-height: 1;
     margin-bottom: 8px;
 }
 .stat-label {
     color: var(--color-texte);
-    font-size: 16px;
+    font-size: 32px;
     font-weight: 400;
 }
 
 /* "Vous Souhaitez" block */
-.vous-souhaitez { position: relative; max-width: 1180px; margin: 0 auto; padding: 0 48px; box-sizing: border-box; }
+.vous-souhaitez {
+    position: relative;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 48px;
+    box-sizing: border-box;
+}
+
 .vs-title {
-    font-size: 48px;
+    font-size: 64px;
+    font-weight: 400;
     color: var(--color-texte);
-    margin: 8px 0 28px 0;
+    margin: 150px 0 28px 0;
 }
 
 /* left image / right list grid */
@@ -707,7 +715,7 @@ nav.hidden {
     padding: 8px 16px;
     background: transparent;
     cursor: pointer;
-    transition: background .15s ease;
+    transition: all 15s ease;
 }
 .vous-list li:hover { background: rgba(0,0,0,0.03); }
 
@@ -732,7 +740,7 @@ nav.hidden {
 
 .vs-text {
     color: var(--color-texte);
-    font-size: 18px;
+    font-size: 20px;
     flex: 1 1 auto;
 }
 .vs-chevron {
@@ -745,11 +753,11 @@ nav.hidden {
 /* decorative big symbol on the right */
 .section4-symbol {
     position: absolute;
-    right: -6%;
-    top: 8%;
+    right: -100px;
+    top: 20%;
     width: 420px;
     height: 420px;
-    background: url("../images/bg_symbole.png") no-repeat center/contain;
+    background: url("../images/elephant.svg") no-repeat center/contain;
     opacity: 1;
     pointer-events: none;
     z-index: 1;
