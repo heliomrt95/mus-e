@@ -1,0 +1,186 @@
+/* Footer principal */
+footer {
+    width: 100%;
+    background-image: url(../images/footer_bg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 4rem 6rem 2rem;
+    color: #fff;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 48px;
+}
+
+.footer-top {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex: 0 0 auto;
+}
+
+/* logo taille confortable */
+.footer-brand img,
+.footer-logo {
+    height: 200px;
+    width: auto;
+    display: block;
+}
+
+/* colonnes de liens */
+.footer-links {
+    position: relative;
+    margin-left: auto;
+    display: flex;
+    gap: 3.5rem;
+    align-items: flex-start;
+    justify-content: flex-end;
+    flex: 1 1 auto;
+    flex-wrap: nowrap;
+}
+
+.footer-links .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    min-width: 100px;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* liens empilés */
+.footer-links .footer-col a {
+    display: block;
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 14px;
+    line-height: 1.2;
+    white-space: normal;
+}
+
+.footer-links .footer-col a:hover {
+    transform: translateX(4px);
+    color: #ffffff;
+}
+
+.contact-title {
+    margin-top: 2em;
+}
+
+/* zone info (horaires, coordonnées, newsletter) */
+.footer-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    align-items: start;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    margin-top: 1.5rem;
+}
+
+.footer-info h3 {
+    margin-bottom: 0.8rem;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.footer-info p, 
+.footer-info li {
+    color: rgba(255,255,255,0.9);
+    font-weight: 200;
+    line-height: 1.5;
+    font-size: 16px;
+}
+
+/* ligne légale */
+.footer-legal {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    text-align: center;
+    color: rgba(255,255,255,0.75);
+    font-size: 14px;
+}
+
+/* icônes réseaux */
+.footer-social {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.footer-social img {
+    width: 44px;
+    height: auto;
+    display: block;
+}
+
+/* horaires détaillées */
+.footer-horaires h3 {
+    font-size: 22px;
+    margin-bottom: 0.6rem;
+    font-weight: 400;
+}
+
+.footer-horaires p {
+    margin: 0 0 0.8rem 0;
+    color: rgba(255,255,255,0.92);
+    font-size: 16px;
+    font-weight: 300;
+    max-width: 420px;
+}
+
+.footer-horaires ul {
+    list-style: disc;
+    list-style-position: inside;
+    margin: 0;
+    padding: 0;
+    color: rgba(255,255,255,0.9);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.footer-horaires ul li {
+    margin-bottom: 12px;
+    font-weight: 300;
+}
+
+/* bouton newsletter (style type "réserver maintenant") */
+.footer-newsletter .btn-newsletter {
+    background: transparent;
+    color: var(--color-background);
+    border: 1.6px solid var(--color-background);
+    padding: 10px 18px;
+    font-weight: 500;
+    transition: all 0.18s ease;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.footer-newsletter .btn-newsletter:hover,
+.footer-newsletter .btn-newsletter:focus {
+    background: var(--color-background);
+    color: #000000;
+    border-color: #222;
+}
+
+.footer-newsletter .logo-ville {
+    display: block;
+    margin-top: 18px;
+    max-width: 260px;
+    height: auto;
+}

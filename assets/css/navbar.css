@@ -1,0 +1,124 @@
+/* Navigation principale */
+nav {
+    position: fixed;
+    background-color: transparent;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    top: 0;
+    transition: all 1s ease-in-out;
+}
+
+nav.hidden {
+    transform: translateY(-120%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.fondu-navbar {
+    position: fixed;
+    transition: all 1s ease-in-out;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(0deg, rgba(245, 245, 247, 0) 50%, rgba(37, 25, 14, 1) 100%);
+    z-index: 90;
+    pointer-events: none;
+}
+
+.fondu-navbar.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+/* Header fondu décoratif */
+.fondu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    background: linear-gradient(0deg, rgba(245, 245, 247, 0) 0%, rgba(37, 25, 14, 1) 100%);
+    z-index: 90;
+    pointer-events: none;
+}
+
+.fondu.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+/* Structure des listes de nav */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+    align-items: center; 
+    width: 100%;
+    justify-content: flex-start;
+}
+
+nav ul li.nav-right {
+    margin-left: auto;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+nav ul li.lang a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.4rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 300;
+    font-size: 1rem;
+}
+
+nav ul li.lang .chevron {
+    font-size: 0.9rem;
+    line-height: 1;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: normal;
+    transition: color 0.3s;
+    font-size: 32px;
+}
+
+nav ul li a:hover {
+    color: var(--color-primaire);
+}
+
+/* Tarifs / icône ticket */
+nav ul li.nav-right a.nav-tarifs {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.25rem 0.5rem;
+}
+
+nav ul li.nav-right a.nav-tarifs:hover {
+    color: var(--color-primaire);
+}
+
+nav ul li.nav-right .tarifs-text {
+    display: inline-block;
+    font-size: 26px;
+}
+
+nav ul li.nav-right .icon-ticket--mask {
+    width: 2rem;
+    height: 2rem;
+}
