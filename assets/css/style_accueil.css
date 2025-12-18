@@ -1,36 +1,8 @@
-/* Variables globales */
-:root {
-    --color-texte: #352D27;
-    --color-primaire: #C49062;
-    --color-background: #fcfcfc;
-}
 
-/* Reset et base */
-* {
-    margin: 0;
+/* Exception pour la section accueil (hero full-width) */
+.accueil {
     padding: 0;
-    box-sizing: border-box;
-    font-family: "Bricolage Grotesque", sans-serif;
 }
-
-html {
-    scrollbar-width: none;
-    overflow-x: hidden;
-}
-
-body {
-    background-color: var(--color-background);
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    overflow-x: hidden;
-}
-
-img, video, svg {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
 
 .icon-ticket--mask {
     display: inline-block;
@@ -62,6 +34,7 @@ img, video, svg {
 }
 
 .accueil .container {
+    width: 600px;
     position: absolute;
     padding-left: 1.5rem;
     padding-bottom: 2rem;
@@ -74,6 +47,7 @@ img, video, svg {
     top: 80%;
     color: #fff;
     z-index: 90;
+    max-width: none;
 }
 
 .accueil .container h1 {
@@ -138,12 +112,10 @@ img, video, svg {
 }
 
 /* Section À la une */
-.la-une .container {
-    width: 100%;
-    max-width: none; 
-    margin: 6rem 0;
-    padding: 0 clamp(1rem, 6vw, 120px);
-    background-color: var(--color-background);
+.la-une {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    position: relative;
 }
 
 .la-une-title {
@@ -153,23 +125,16 @@ img, video, svg {
     color: #1b0f0c;
 }
 
-.la-une-title,
-.la-une-grid {
-    max-width: 1076px;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .la-une-grid {
     display: grid;
-    grid-template-columns: 440px minmax(300px, 580px);
-    gap: 56px;
+    grid-template-columns: 440px minmax(300px, 1fr);
+    gap: 10%;
     align-items: start;
 }
 
 article.featured {
-    width: 440px;
+    width: 100%;
+    max-width: 440px;
     margin: 0;           
 }
 
@@ -181,7 +146,7 @@ article.featured {
 
 .featured figure img {
     display: block;
-    width: 440px;
+    width: 100%;
     height: 434px;
     object-fit: cover;
 }
@@ -263,22 +228,6 @@ article.featured {
     margin-left: 15px;
 }
 
-@media (max-width: 900px) {
-    .badge { 
-        font-size: 11px; 
-        padding: 3px 6px; 
-        top: 8px; 
-        left: 8px; 
-    }
-    .la-une-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-    article.featured {
-        width: 100%;
-    }
-}
-
 /* Déco trompe-l'œil */
 .la-une .trompe-image {
     width: 600px;
@@ -291,11 +240,27 @@ article.featured {
     border: none;
 }
 
+@media (max-width: 900px) {
+    .badge { 
+        font-size: 11px; 
+        padding: 3px 6px; 
+        top: 8px; 
+        left: 8px; 
+    }
+    .la-une-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    article.featured {
+        max-width: 100%;
+    }
+}
+
 /* Section Découvrir */
 .découvrir {
     position: relative;
-    padding: 6.5rem 0;
-    background: var(--color-background);
+    padding-top: 6.5rem;
+    padding-bottom: 6.5rem;
     overflow: visible;
 }
 
@@ -306,15 +271,6 @@ article.featured {
     margin: 0 0 32px 0;
     color: var(--color-texte);
     letter-spacing: -1px;
-    position: relative;
-    z-index: 3;
-}
-
-.découvrir .container {
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-    padding: 0 48px;
     position: relative;
     z-index: 3;
 }
@@ -334,7 +290,8 @@ article.featured {
 
 .decouvrir-image img {
     display: block;
-    width: 672px;
+    width: 100%;
+    max-width: 672px;
     height: 483px;
     object-fit: cover;
     border-radius: 2px;
@@ -401,7 +358,6 @@ article.featured {
 @media (max-width: 900px) {
     .decouvrir-title {
         font-size: 48px;
-        margin-left: 24px;
         text-align: left;
     }
     .decouvrir-grid {
@@ -416,8 +372,8 @@ article.featured {
 /* Section 4 - stats et vous souhaitez */
 .section4 {
     position: relative;
-    padding: 6rem 0 8rem;
-    background: var(--color-background);
+    padding-top: 6rem;
+    padding-bottom: 8rem;
     overflow: visible;
 }
 
@@ -426,9 +382,7 @@ article.featured {
     gap: 40px;
     justify-content: space-between;
     align-items: start;
-    max-width: 1180px;
-    margin: 0 auto 48px;
-    padding: 0 48px;
+    margin-bottom: 48px;
 }
 
 .stat {
@@ -452,9 +406,6 @@ article.featured {
 
 .vous-souhaitez {
     position: relative;
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 0 48px;
 }
 
 .vs-title {
@@ -598,6 +549,7 @@ article.featured {
     }
 }
 
+/* Footer media queries */
 @media (max-width: 1024px) {
     .footer-top { 
         flex-direction: column; 

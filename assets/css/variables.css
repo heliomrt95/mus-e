@@ -1,0 +1,7 @@
+:root {
+    --color-texte: #352D27;
+    --color-primaire: #C49062;
+    --color-background: #fcfcfc;
+    --max-width: 1180px;
+    --padding-section: clamp(1.5rem, 4vw, 3rem);
+}
