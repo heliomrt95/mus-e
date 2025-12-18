@@ -21,7 +21,7 @@ nav {
     left: 0;
     right: 0;
     box-sizing: border-box;
-    z-index: 10;
+    z-index: 100;
     top: 0;
     transition: all 1s ease-in-out;
 }
@@ -36,7 +36,8 @@ nav {
     height: 50%;
     background: #F5F5F7;
     background: linear-gradient(0deg, rgba(245, 245, 247, 0) 50%, rgba(37, 25, 14, 1) 100%);
-    z-index: 5;
+    z-index: 90;            /* lowered so it doesn't cover interactive elements */
+    pointer-events: none;  /* allow clicks/hover to pass through */
 }
 
 .fondu {
@@ -48,7 +49,8 @@ nav {
     height: 80%;
     background: #F5F5F7;
     background: linear-gradient(0deg, rgba(245, 245, 247, 0) 0%, rgba(37, 25, 14, 1) 100%);
-    z-index: 5;
+    z-index: 90;            /* lowered so it doesn't cover interactive elements */
+    pointer-events: none;  /* allow clicks/hover to pass through */
 }
 
 nav ul {
@@ -98,13 +100,15 @@ nav ul li a:hover {
 }
 
 .accueil {
+    position: relative; /* nécessaire pour que .container absolute soit relatif à .accueil et que z-index fonctionne */
     height: 85vh;
     padding: 4rem 2rem;
-    background-image: url(accueil.webp);
+    background-image: url("../images/accueil.webp"); /* chemin relatif corrigé */
     object-fit: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    z-index: 60;
 }
 
 .accueil .container {
@@ -112,8 +116,7 @@ nav ul li a:hover {
     padding-left: 1.5rem;
     padding-bottom: 2rem;
     padding-right: 10%;
-    background-color: #362e28;
-    background-image: url('Frame 29.svg');
+    background-image: url("../images/bg_block_accueil.svg"); /* chemin corrigé */
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover; 
@@ -122,7 +125,7 @@ nav ul li a:hover {
     margin: 0 auto;
     color: #fff;
     text-decoration: none;
-    z-index: 40;
+    z-index: 90;
 }
 
 .accueil .container h1 {
@@ -210,13 +213,12 @@ nav ul li a:hover {
 
 /* remplacement du filtre hover (rapide, approximatif) */
 .bouton a.btn-tarifs:hover img.icon-ticket  {
-    /* rend l'icône blanche sur fond blanc ; ne permet pas un tint parfait */
     filter: invert(100%) brightness(0) saturate(100%);
     transition: all 0.3s ease-in-out;
 }
 
 nav ul li.nav-right a.nav-tarifs:hover {
-    color: #c49062; /* même couleur que les autres liens au hover */
+    color: #c49062;
 }
 
 .navbar .icon-ticket {
@@ -262,9 +264,9 @@ nav ul li.nav-right a.nav-tarifs:hover img.icon-ticket {
     display: inline-block;
     width: 1.5rem;
     height: 1.5rem;
-    background-color: currentColor; /* l'élément prend la couleur du texte */
-    -webkit-mask: url('ticket.svg') no-repeat center/contain;
-    mask: url('ticket.svg') no-repeat center/contain;
+    background-color: currentColor;
+    -webkit-mask: url("../images/ticket.svg") no-repeat center/contain; /* chemin corrigé */
+    mask: url("../images/ticket.svg") no-repeat center/contain;
     -webkit-mask-size: contain;
     mask-size: contain;
     pointer-events: none;
@@ -301,24 +303,20 @@ nav ul li.nav-right img.icon-ticket {
     color: #1b0f0c;
 }
 
-/* centre la zone "la une" et aligne le titre sur le bord gauche de la grid */
 .la-une-title,
 .la-une-grid {
-    /* largeur totale maximale = colonne gauche (440) + gap (56) + colonne droite max (580) */
     max-width: 1076px;
     width: 100%;
     margin-left: auto;
-    margin-right: auto; /* centre l'ensemble dans le container */
+    margin-right: auto; 
     box-sizing: border-box;
 }
 
-/* garde la structure de la grille mais sans forcer un recentrage interne */
 .la-une-grid {
     display: grid;
     grid-template-columns: 440px minmax(300px, 580px);
     gap: 56px;
     align-items: start;
-    /* justify-content retiré pour que la grid occupe sa max-width centrée */
 }
 
 article.featured {
@@ -465,11 +463,137 @@ nav.hidden {
 }
 
 .la-une .trompe-image {
-    width: 950px;
-    height: 950px;
+    width: 600px;
+    height: auto;
     position: absolute;
     display: block;
-    bottom: -50%;
+    bottom: -55%;
     right: 0;
-    z-index: 100;
+    z-index: 10;
+    transform: rotate(0deg);
+    border: none;
+}
+
+/* --- Découvrir (nouvelle section) --- */
+.découvrir {
+    position: relative;
+    padding: 6.5rem 0;
+    background: var(--color-background);
+    overflow: visible;
+}
+
+/* titre grand à gauche */
+.decouvrir-title {
+    font-size: 88px;
+    line-height: 1;
+    font-weight: 400;
+    margin: 0 0 32px 6rem;
+    color: var(--color-texte);
+    letter-spacing: -1px;
+    position: relative;
+    z-index: 3;
+}
+
+/* container identique à la-une */
+.découvrir .container {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 48px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 3;
+}
+
+/* grille image gauche / texte droite */
+.decouvrir-grid {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 56px;
+    align-items: center;
+}
+
+/* image principale */
+.decouvrir-image img {
+    display: block;
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    border-radius: 2px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+/* colonne de texte */
+.decouvrir-content h2 {
+    font-size: 28px;
+    margin: 0 0 12px 0;
+    color: var(--color-texte);
+}
+.decouvrir-content .lead {
+    margin-bottom: 14px;
+    color: #222;
+    line-height: 1.5;
+    font-weight: 300;
+}
+.decouvrir-content p {
+    color: #222;
+    line-height: 1.5;
+    margin-bottom: 18px;
+    font-weight: 300;
+}
+
+/* bouton style bordé (comme sur la maquette) */
+.découvrir .bouton .btn-tarifs {
+    background: transparent;
+    color: var(--color-texte);
+    border: 1.6px solid #222;
+    padding: 10px 18px;
+    font-weight: 500;
+    transition: all 0.18s ease;
+    display: inline-block;
+    text-decoration: none;
+}
+.découvrir .bouton .btn-tarifs:hover {
+    background: #222;
+    color: #fff;
+    border-color: #222;
+}
+
+/* décor circulaire côté gauche (optionnel) : utilisez [bg_symbole.png](http://_vscodecontentref_/2) si présent */
+.découvrir::before {
+    content: "";
+    position: absolute;
+    left: -8%;
+    top: 10%;
+    width: 420px;
+    height: 420px;
+    background: url("assets/images/bg_symbole.png") no-repeat center/contain;
+    opacity: 1;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* s'assurer que les éléments principaux sont au-dessus du décor */
+.découvrir .container,
+.decouvrir-title,
+.decouvrir-grid > * {
+    position: relative;
+    z-index: 3;
+}
+
+/* responsive */
+@media (max-width: 900px) {
+    .decouvrir-title {
+        font-size: 48px;
+        margin-left: 24px;
+        text-align: left;
+    }
+    .decouvrir-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    .decouvrir-image img {
+        height: 320px;
+    }
+    .découvrir::before { display: none; }
 }
