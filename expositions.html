@@ -18,12 +18,20 @@
 <body>
     <header>
         <nav class="navbar" role="navigation">
+            <!-- Menu burger mobile -->
+            <button class="burger-menu" aria-label="Ouvrir le menu" aria-expanded="false">
+                <span class="hamburger-icon"></span>
+            </button>
+            
+            <!-- Logo centré sur mobile -->
+            <a href="index.html" class="logo-mobile"><img src="assets/logos/logo_black_brown.svg" alt="Muséum de Bordeaux"></a>
+            
+            <!-- Icône ticket mobile -->
+            <a href="#tarifs" class="nav-tarifs-mobile" aria-label="Voir les tarifs">
+                <span class="icon-ticket icon-ticket--mask" aria-hidden="true"></span>
+            </a>
+            
             <ul>
-                <li class="menu-toggle">
-                    <button type="button" aria-label="Menu" class="btn-menu">
-                        <span class="hamburger-icon"></span>
-                    </button>
-                </li>
                 <li class="logo"><a href="index.html"><img src="assets/logos/logo_black_brown.svg" alt="Muséum de Bordeaux"></a></li>
                 <li><a href="index.html">Accueil</a></li>
                 <li><a href="#animations">Animations</a></li>
