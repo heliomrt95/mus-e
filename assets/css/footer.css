@@ -184,3 +184,181 @@ footer a {
     max-width: 260px;
     height: auto;
 }
+
+/* Logo ville - desktop vs mobile */
+.footer-newsletter .logo-ville-desktop {
+    display: block;
+}
+
+.footer-newsletter .logo-ville-mobile {
+    display: none;
+}
+
+/* ===== RESPONSIVE MOBILE ===== */
+@media (max-width: 768px) {
+    footer {
+        padding: 3rem 1.5rem 2rem;
+    }
+    
+    .footer-container {
+        padding: 0;
+    }
+    
+    /* Header avec logo centré */
+    .footer-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+    
+    .footer-brand {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .footer-brand img,
+    .footer-logo {
+        height: 80px;
+    }
+    
+    /* Liens en une seule colonne */
+    .footer-links {
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        margin-left: 0;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .footer-links .footer-col {
+        gap: 0;
+    }
+    
+    .footer-links .footer-col a {
+        font-size: 18px;
+        font-weight: 400;
+        margin-bottom: 0.8rem;
+    }
+    
+    /* Zone info en colonne */
+    .footer-info {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding-top: 0;
+        border-top: none;
+        margin-top: 0;
+    }
+    
+    /* Horaires */
+    .footer-horaires {
+        padding: 1.5rem 0;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .footer-horaires h3 {
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 0.8rem;
+    }
+    
+    .footer-horaires p {
+        font-size: 15px;
+        margin-bottom: 1rem;
+    }
+    
+    .footer-horaires ul {
+        font-size: 15px;
+    }
+    
+    .footer-horaires ul li {
+        margin-bottom: 1rem;
+    }
+    
+    /* Coordonnées */
+    .footer-coordonnees {
+        padding: 1.5rem 0;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .footer-coordonnees h3 {
+        font-size: 20px;
+        font-weight: 500;
+    }
+    
+    .footer-coordonnees p {
+        font-size: 15px;
+        margin-bottom: 0.3rem;
+    }
+    
+    .footer-phone {
+        margin-bottom: 0 !important;
+    }
+    
+    /* Nous contacter - section séparée */
+    .footer-coordonnees .contact-title {
+        display: block;
+        padding-top: 1.5rem;
+        margin-top: 1.5rem;
+        border-top: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .footer-social {
+        margin-top: 0.8rem;
+        gap: 12px;
+    }
+    
+    .footer-social img {
+        width: 36px;
+    }
+    
+    /* Newsletter */
+    .footer-newsletter {
+        padding: 1.5rem 0;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+    
+    .footer-newsletter h3 {
+        width: 100%;
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 1rem;
+    }
+    
+    .footer-newsletter .btn-newsletter {
+        padding: 8px 14px;
+        font-size: 14px;
+    }
+    
+    .footer-newsletter .logo-ville {
+        margin-top: 0;
+        max-width: 50px;
+        height: auto;
+    }
+    
+    /* Logo ville - inverser sur mobile */
+    .footer-newsletter .logo-ville-desktop {
+        display: none;
+    }
+    
+    .footer-newsletter .logo-ville-mobile {
+        display: block;
+    }
+    
+    /* Mentions légales */
+    .footer-legal {
+        margin-top: 1.5rem;
+        padding-top: 0;
+        border-top: none;
+        font-size: 12px;
+        text-align: center;
+    }
+    
+    .footer-legal p {
+        line-height: 1.5;
+    }
+}

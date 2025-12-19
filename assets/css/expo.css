@@ -1,0 +1,401 @@
+
+
+/* Section hero exposition */
+.expo-hero {
+    padding: 0;
+    width: 100%;
+    margin-top: 80px; /* Espace pour la navbar fixe */
+    position: relative;
+    overflow: hidden;
+}
+
+.expo-hero img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    min-height: 60vh;
+}
+
+/* Section titre exposition */
+.expo-title {
+    padding: 3rem var(--padding-section);
+    background-color: var(--color-background);
+}
+
+p {
+    font-size: 16px;
+    font-weight: 300;
+}
+
+h1 {
+    font-size: 64px;
+    letter-spacing: 2px;
+    font-weight: 400;
+}
+
+h2 {
+    font-size: 40px;
+    font-weight: 500;
+}
+
+h3 {
+    font-size: 32px;
+    font-weight: 500;
+}
+
+h4 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+
+.expo-title h1 {
+    color: var(--color-texte);
+    margin: 0;
+    line-height: 1.1;
+    font-family: "Bricolage Grotesque", sans-serif;
+}
+
+/* Conteneur pour alignement */
+.expo-title .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .expo-title h1 {
+        font-size: 48px;
+    }
+}
+
+/* Section carte exposition */
+.expo-card {
+    position: relative;
+    padding: 0 var(--padding-section) 4rem;
+    background-color: var(--color-background);
+    overflow: hidden;
+}
+
+.expo-card-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    align-items: start;
+}
+
+.expo-card-image {
+    position: relative;
+}
+
+.expo-card-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Icône circulaire sur l'image - cachée par défaut */
+.expo-image-icon {
+    display: none;
+}
+
+.expo-card-info {
+    padding: 1rem 0;
+}
+
+.expo-card-info h2 {
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--color-texte);
+    margin: 0 0 1.5rem 0;
+    line-height: 1.2;
+}
+
+.expo-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-texte);
+    margin-bottom: 1.5rem;
+}
+
+.expo-stats {
+    margin-bottom: 2rem;
+}
+
+.expo-stats p {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-texte);
+    margin: 0.5rem 0;
+}
+
+.stat-number {
+    color: var(--color-primaire);
+    font-weight: 600;
+}
+
+.btn-reservation {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--color-texte);
+    color: var(--color-texte);
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.btn-reservation:hover {
+    background-color: var(--color-texte);
+    color: var(--color-background);
+}
+
+/* Décoration courbe */
+.expo-card-decoration {
+    position: absolute;
+    right: -300px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 450px;
+    height: 450px;
+    border: 50px solid rgba(196, 144, 98, 0.15);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+/* Version inversée (texte à gauche, image à droite) */
+.expo-card-reverse .expo-card-content {
+    grid-template-columns: 1fr 1fr;
+}
+
+.expo-card-reverse .expo-card-info {
+    order: 1;
+}
+
+.expo-card-reverse .expo-card-image {
+    order: 2;
+}
+
+.expo-card-decoration-left {
+    display: none;
+}
+
+/* Décoration coin - cachée */
+.expo-corner-decoration {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .expo-card-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .expo-card-info h2 {
+        font-size: 28px;
+    }
+    
+    /* Garder la décoration visible sur mobile */
+    .expo-card-decoration {
+        right: -250px;
+        width: 350px;
+        height: 350px;
+        border-width: 40px;
+    }
+    
+    /* Pour la version inversée, remettre image en premier sur mobile */
+    .expo-card-reverse .expo-card-image {
+        order: 1;
+    }
+    
+    .expo-card-reverse .expo-card-info {
+        order: 2;
+    }
+}
+
+/* Section grille d'expositions */
+.expo-grid {
+    position: relative;
+    padding: 4rem var(--padding-section);
+    background-color: var(--color-background);
+    overflow: hidden;
+}
+
+.expo-grid-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.expo-grid-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.expo-grid-card-image {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.expo-grid-card-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.expo-grid-card h3 {
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--color-texte);
+    margin: 0 0 1rem 0;
+    line-height: 1.3;
+}
+
+.expo-grid-card p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-texte);
+    margin: 0;
+}
+
+/* Décoration courbe pour la grille */
+.expo-grid-decoration {
+    position: absolute;
+    right: -150px;
+    bottom: -200px;
+    width: 500px;
+    height: 500px;
+    border: 50px solid rgba(196, 144, 98, 0.15);
+    border-radius: 50%;
+    pointer-events: none;
+    top: auto;
+    transform: none;
+}
+
+@media (max-width: 1024px) {
+    .expo-grid-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .expo-hero {
+        margin-top: 60px;
+    }
+    
+    .expo-hero img {
+        min-height: 30vh;
+    }
+    
+    .expo-title {
+        padding: 2rem var(--padding-section);
+    }
+    
+    h1 {
+        font-size: 40px;
+    }
+    
+    h2 {
+        font-size: 28px;
+    }
+    
+    h3 {
+        font-size: 24px;
+    }
+    
+    .expo-grid-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .expo-grid-card h3 {
+        font-size: 24px;
+    }
+    
+    /* Garder la décoration de la grille visible sur mobile */
+    .expo-grid-decoration {
+        right: -200px;
+        bottom: -150px;
+        width: 350px;
+        height: 350px;
+        border-width: 40px;
+    }
+    
+    .expo-card-decoration-left {
+        display: none;
+    }
+    
+    /* Section expo-card-reverse (Les formes de la nature) sur mobile */
+    .expo-card-reverse {
+        position: relative;
+        padding-top: 0;
+    }
+    
+    /* Décoration coin haut droite - cachée sur mobile */
+    .expo-corner-decoration {
+        display: none;
+    }
+    
+    /* Layout en colonne : image en haut, texte en bas */
+    .expo-card-reverse .expo-card-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    /* Image en premier (en haut) */
+    .expo-card-reverse .expo-card-image {
+        order: 1;
+        position: relative;
+        width: 100%;
+    }
+    
+    .expo-card-reverse .expo-card-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+    }
+    
+    /* Cacher l'icône sur mobile */
+    .expo-card-reverse .expo-image-icon {
+        display: none;
+    }
+    
+    /* Cacher la décoration en C sur mobile */
+    .expo-card-reverse .expo-card-image::after {
+        display: none;
+    }
+    
+    /* Texte en second (en bas) */
+    .expo-card-reverse .expo-card-info {
+        order: 2;
+        display: flex;
+        flex-direction: column;
+        padding-top: 0;
+        margin-top: 0;
+    }
+    
+    .expo-card-reverse .expo-card-info h2 {
+        font-size: 26px;
+        line-height: 1.3;
+        margin: 0 0 1rem 0;
+    }
+    
+    .expo-card-reverse .expo-description {
+        font-size: 15px;
+        line-height: 1.7;
+        margin-top: 0;
+    }
+    
+    /* Grand cercle décoration bas droite - caché ou ajusté */
+    .expo-card-reverse .expo-card-decoration-left {
+        display: none;
+    }
+}
+

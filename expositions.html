@@ -5,22 +5,27 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Muséum - Accueil</title>
     <link rel="icon" type="image/png" href="/assets/icons/logoico.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="assets/css/fonts.css">
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/variables.css">
     <link rel="stylesheet" href="assets/css/system.css">
     <link rel="stylesheet" href="assets/css/navbar_expo.css">
     <link rel="stylesheet" href="assets/css/expo.css">
     <link rel="stylesheet" href="assets/css/footer.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav class="navbar" role="navigation">
             <ul>
-                <li class="logo"><a href="index.html"><img src="/assets/logos/logo_black_brown.svg" alt="Muséum de Bordeaux"></a></li>
-                <li><a href="expositions.html">Expositions</a></li>
+                <li class="menu-toggle">
+                    <button type="button" aria-label="Menu" class="btn-menu">
+                        <span class="hamburger-icon"></span>
+                    </button>
+                </li>
+                <li class="logo"><a href="index.html"><img src="assets/logos/logo_black_brown.svg" alt="Muséum de Bordeaux"></a></li>
+                <li><a href="index.html">Accueil</a></li>
                 <li><a href="#animations">Animations</a></li>
                 <li><a href="#actualites">Actualités</a></li>
                 <li class="nav-right">
@@ -33,6 +38,156 @@
             </ul>
         </nav>
     </header>
+    
+    <main>
+        <section class="expo-hero">
+            <img src="assets/photo_expo/header.png" alt="Exposition du Muséum de Bordeaux">
+        </section>
+        
+        <section class="expo-title">
+            <div class="container">
+                <h1>Exposition</h1>
+            </div>
+        </section>
+        
+        <section class="expo-card">
+            <div class="expo-card-content">
+                <div class="expo-card-image">
+                    <img src="assets/photo_expo/image2ordi.png" alt="Les animaux du littoral aquitain">
+                </div>
+                <div class="expo-card-info">
+                    <h2>Les animaux du littoral aquitain</h2>
+                    <p class="expo-description">Dans cette vitrine, prédateurs et proies se font face : becs crochus, mâchoires armées de dents, venins et camouflages. L’exposition “Mange-moi si tu peux” montre comment chaque animal se nourrit, se défend ou trompe ses ennemis pour survivre. On y suit différentes scènes de chasse, des fonds marins aux milieux terrestres, et l’on comprend que, dans la nature, personne n’est jamais complètement à l’abri.</p>
+                    <div class="expo-stats">
+                        <p><span class="stat-number">25</span> espèces présentées</p>
+                        <p><span class="stat-number">6</span> chaînes alimentaires reconstituées</p>
+                    </div>
+                    <a href="#reservation" class="btn-reservation">Réservez maintenant</a>
+                </div>
+            </div>
+            <div class="expo-card-decoration"></div>
+        </section>
+        
+        <section class="expo-grid">
+            <div class="container">
+                <div class="expo-grid-cards">
+                    <article class="expo-grid-card">
+                        <div class="expo-grid-card-image">
+                            <img src="assets/photo_expo/image3ordi_expo.png" alt="La tortue des profondeurs">
+                        </div>
+                        <h3>La tortue des profondeurs</h3>
+                        <p>Suivez le regard de cette grande tortue marine et plongez dans les secrets de la vie sous l’océan.</p>
+                    </article>
+                    
+                    <article class="expo-grid-card">
+                        <div class="expo-grid-card-image">
+                            <img src="assets/photo_expo/image4ordi_expo.png" alt="Sous le regard de l'ours polaire">
+                        </div>
+                        <h3>Sous le regard de l'ours polaire</h3>
+                        <p>Rencontrez l'un des plus grand géants de l'Arctique et explorez la vie dans les milieux extrêmes.</p>
+                    </article>
+                    
+                    <article class="expo-grid-card">
+                        <div class="expo-grid-card-image">
+                            <img src="assets/photo_expo/image5ordi_expo.png" alt="Dans la gueule du crocodile">
+                        </div>
+                        <h3>Dans la gueule du crocodile</h3>
+                        <p>Découvrez de près le squelette d'un super-prédateur et ce que ses os révèlent sur la chasse.</p>
+                    </article>
+                </div>
+            </div>
+            <div class="expo-grid-decoration"></div>
+        </section>
+        
+        <section class="expo-card expo-card-reverse">
+            <!-- Décoration coin haut droite (mobile) -->
+            <div class="expo-corner-decoration"></div>
+            <div class="expo-card-content">
+                <div class="expo-card-image">
+                    <img src="assets/photo_expo/image6ordi_expo.png?v=2" alt="Les formes de la nature">
+                    <div class="expo-image-icon"></div>
+                </div>
+                <div class="expo-card-info">
+                    <h2>Les formes de la nature</h2>
+                    <p class="expo-description">Cette vitrine rassemble feuilles, troncs, fossiles et coquillages pour montrer comment les mêmes formes reviennent partout dans le vivant : spirales, cercles, fractales, symétries… L'exposition invite à regarder autrement ce qui nous entoure : une fougère, une tranche de bois ou une coquille deviennent des indices des lois mathématiques qui organisent la nature. On passe ainsi de l'observation esthétique aux questions scientifiques.</p>
+                </div>
+            </div>
+            <div class="expo-card-decoration expo-card-decoration-left"></div>
+        </section>
+    </main>
+    
+    <!-- footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" aria-label="Muséum Bordeaux">
+                        <img src="assets/images/logo_footer.svg" alt="Muséum Bordeaux" class="footer-logo">
+                    </a>
+                </div>
+
+                <div class="footer-links" aria-label="Liens utiles">
+                    <div class="footer-col">
+                        <a href="#engagements">Nos engagement</a>
+                        <a href="#partenaire">Partenaire du musée</a>
+                        <a href="#emploi">Offre d'emploi</a>
+                    </div>
+                    <div class="footer-col">
+                        <a href="#cookie">Cookie</a>
+                        <a href="#cgu">CGU</a>
+                        <a href="#tarifs">Tarifs</a>
+                    </div>
+                    <div class="footer-col">
+                        <a href="#plan">Plan du site</a>
+                        <a href="#faq">FAQ</a>
+                        <a href="#presse">Presse</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-info">
+                <div class="footer-horaires">
+                    <h3>Horaires d'ouverture</h3>
+                    <p>Ouvert du mardi au dimanche — fermé les jours fériés sauf 14 juillet et 15 août</p>
+                    <ul>
+                        <li>Octobre à mars : 10h30 - 17h30</li>
+                        <li>Avril à septembre : 10h30 - 18h00</li>
+                        <li>24 et 31 décembre : 10h30 - 16h00</li>
+                    </ul>
+                </div>
+
+                <div class="footer-coordonnees">
+                    <h3>Coordonnées</h3>
+                    <p>5 place Bardineau - 33000 Bordeaux</p>
+                    <p class="footer-phone">05 24 57 65 30</p>
+                    <h3 class="contact-title">Nous contacter</h3>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook Muséum">
+                            <img src="assets/icons/facebook.svg" alt="Facebook">
+                        </a>
+                        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram Muséum">
+                            <img src="assets/icons/insta.svg" alt="Instagram">
+                        </a>
+                        <a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube Muséum">
+                            <img src="assets/icons/youtube.svg" alt="YouTube">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-newsletter">
+                    <h3>Rejoindre la newsletter</h3>
+                    <a href="#newsletter" class="btn-newsletter">S'inscrire</a>
+                    <img src="assets/icons/villedebordeaux1.png" alt="Ville de Bordeaux" class="logo-ville logo-ville-desktop">
+                    <img src="assets/mobile icon/villedebordeaux2.png" alt="Ville de Bordeaux" class="logo-ville logo-ville-mobile">
+                </div>
+            </div>
+
+            <div class="footer-legal">
+                <p>Mentions légales · Politique de confidentialité · Crédits · © Muséum de Bordeaux, 2025</p>
+            </div>
+        </div>
+    </footer>
+    
     <script src="js/script.js"></script>
 </body>
 </html>

@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'Bricolage Grotesque';
+    src: url('../fonts/Bricolage_Grotesque/BricolageGrotesque-VariableFont_opsz,wdth,wght.ttf') format('truetype');
+    font-weight: 200 800;
+    font-stretch: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Fallback vers Google Fonts si les fichiers locaux ne sont pas disponibles */
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');

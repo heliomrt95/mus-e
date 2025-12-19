@@ -1,7 +1,12 @@
+/* Bloquer le scroll quand menu ouvert */
+body.menu-open {
+    overflow: hidden;
+}
+
 /* Navigation principale */
 nav {
     position: fixed;
-    background-color: transparent;
+    background-color: var(--color-background);
     padding: 1rem 2rem;
     display: flex;
     align-items: center;
@@ -10,12 +15,14 @@ nav {
     right: 0;
     z-index: 100;
     top: 0;
-    transition: all 1s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    border-bottom: 3px solid var(--color-primaire);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 nav.hidden {
     transform: translateY(-120%);
-    opacity: 0;
+    opacity: 1;
     pointer-events: none;
 }
 
@@ -28,6 +35,24 @@ nav ul {
     align-items: center; 
     width: 100%;
     justify-content: flex-start;
+}
+
+/* Logo */
+nav ul li.logo {
+    display: flex;
+    align-items: center;
+}
+
+nav ul li.logo a {
+    display: flex;
+    align-items: center;
+}
+
+nav ul li.logo img {
+    display: block;
+    height: 50px;
+    width: auto;
+    max-width: 80px;
 }
 
 nav ul li.nav-right {
@@ -54,7 +79,7 @@ nav ul li.lang .chevron {
 }
 
 nav ul li a {
-    color: black;
+    color: var(--color-texte);
     text-decoration: none;
     font-weight: normal;
     transition: color 0.3s;
@@ -86,6 +111,177 @@ nav ul li.nav-right .tarifs-text {
 }
 
 nav ul li.nav-right .icon-ticket--mask {
+    display: inline-block;
     width: 2rem;
     height: 2rem;
+    background-color: currentColor;
+    -webkit-mask: url("../images/ticket.svg") no-repeat center/contain;
+    mask: url("../images/ticket.svg") no-repeat center/contain;
+    pointer-events: none;
+    vertical-align: middle;
+}
+
+/* Menu toggle - caché sur desktop */
+nav ul li.menu-toggle {
+    display: none;
+}
+
+.btn-menu {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hamburger-icon {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-texte);
+    position: relative;
+}
+
+.hamburger-icon::before,
+.hamburger-icon::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-texte);
+    left: 0;
+}
+
+.hamburger-icon::before {
+    top: -7px;
+}
+
+.hamburger-icon::after {
+    top: 7px;
+}
+
+/* Mobile navbar */
+@media (max-width: 768px) {
+    nav {
+        padding: 0.75rem 1rem;
+    }
+    
+    nav ul {
+        gap: 0;
+        justify-content: space-between;
+    }
+    
+    /* Cacher les liens de navigation sur mobile */
+    nav ul li:not(.logo):not(.nav-right):not(.menu-toggle) {
+        display: none;
+    }
+    
+    nav ul li.lang {
+        display: none;
+    }
+    
+    /* Logo centré */
+    nav ul li.logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    nav ul li.logo img {
+        height: 35px;
+    }
+    
+    /* Icône menu hamburger */
+    nav ul li.menu-toggle {
+        display: flex;
+        order: -1;
+    }
+    
+    /* Tarifs - juste l'icône */
+    nav ul li.nav-right {
+        margin-left: auto;
+    }
+    
+    nav ul li.nav-right .tarifs-text {
+        display: none;
+    }
+    
+    nav ul li.nav-right a.nav-tarifs {
+        gap: 0;
+        padding: 0.25rem;
+    }
+    
+    nav ul li.nav-right .icon-ticket--mask {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    
+    /* Menu mobile ouvert */
+    nav.menu-open ul {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 1.5rem 2rem;
+        gap: 0;
+        z-index: 99;
+    }
+    
+    /* Croix alignée à gauche avec séparateur */
+    nav.menu-open ul li.menu-toggle {
+        display: block;
+        width: 100%;
+        padding: 0.5rem 0 1rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        margin-bottom: 0.5rem;
+    }
+    
+    nav.menu-open ul li:not(.logo):not(.nav-right):not(.menu-toggle) {
+        display: block;
+        width: 100%;
+        padding: 1rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    nav.menu-open ul li.lang {
+        display: block;
+        width: 100%;
+        padding: 1rem 0;
+    }
+    
+    nav.menu-open ul li a {
+        font-size: 24px;
+    }
+    
+    nav.menu-open ul li.logo {
+        display: none;
+    }
+    
+    nav.menu-open ul li.nav-right {
+        display: none;
+    }
+    
+    /* Animation hamburger vers X */
+    nav.menu-open .hamburger-icon {
+        background-color: transparent;
+    }
+    
+    nav.menu-open .hamburger-icon::before {
+        top: 0;
+        transform: rotate(45deg);
+    }
+    
+    nav.menu-open .hamburger-icon::after {
+        top: 0;
+        transform: rotate(-45deg);
+    }
 }

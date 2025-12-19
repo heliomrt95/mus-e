@@ -15,7 +15,7 @@
     vertical-align: middle;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
     nav ul li.nav-right .tarifs-text { 
         display: none; 
     }
@@ -275,6 +275,10 @@ article.featured {
     z-index: 3;
 }
 
+.decouvrir-title .decouvrir-title-line2 {
+    display: inline;
+}
+
 .decouvrir-grid {
     display: grid;
     grid-template-columns: 1fr 350px;
@@ -508,6 +512,28 @@ article.featured {
     z-index: 1;
 }
 
+/* Bouton Réservez caché sur desktop */
+.stat-btn-mobile {
+    display: none;
+}
+
+.btn-reservez {
+    display: inline-block;
+    padding: 12px 32px;
+    border: 2px solid #222;
+    background: transparent;
+    color: #222;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 400;
+    transition: all 0.2s ease;
+}
+
+.btn-reservez:hover {
+    background: #222;
+    color: #fff;
+}
+
 @media (max-width: 1000px) {
     .vous-grid { 
         grid-template-columns: 1fr; 
@@ -607,5 +633,324 @@ article.featured {
         width: auto; 
         padding: 10px 16px; 
         font-size: 16px; 
+    }
+}
+
+/* ========================================
+   RESPONSIVE MOBILE - PAGE ACCUEIL
+   ======================================== */
+
+@media (max-width: 768px) {
+    
+    /* ===== HERO SECTION ===== */
+    .accueil {
+        height: auto;
+        min-height: auto;
+        padding: 0;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* Créer un espace pour l'image avant le container */
+    .accueil::before {
+        content: "";
+        display: block;
+        width: 100%;
+        padding-bottom: 75%; /* Ratio de l'image */
+    }
+    
+    .accueil .container {
+        width: 100%;
+        position: relative;
+        left: auto;
+        right: auto;
+        top: auto;
+        bottom: auto;
+        padding: 1.5rem 1.25rem;
+        background: #3d3029;
+        background-image: none;
+    }
+    
+    .accueil .container h1 {
+        font-size: 28px;
+        padding-top: 0;
+        margin-bottom: 0.1rem;
+    }
+    
+    .accueil .container h2 {
+        font-size: 24px;
+        margin-bottom: 1rem;
+    }
+    
+    .accueil .container .actions {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    /* Bouton tarifs mobile avec icône */
+    .accueil .bouton a.btn-tarifs {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.6rem 1rem;
+        font-size: 14px;
+        background-color: var(--color-primaire);
+    }
+    
+    /* Ajouter l'icône ticket au bouton mobile */
+    .accueil .bouton a.btn-tarifs::before {
+        content: "";
+        display: inline-block;
+        width: 1.25rem;
+        height: 1.25rem;
+        background-color: #fff;
+        -webkit-mask: url("../images/ticket.svg") no-repeat center/contain;
+        mask: url("../images/ticket.svg") no-repeat center/contain;
+    }
+    
+    .accueil .container p.horaires {
+        font-size: 1rem;
+        margin: 0;
+    }
+    
+    /* Cacher "Ouvert de" sur mobile */
+    .accueil .container .horaires-prefix {
+        display: none;
+    }
+    
+    /* ===== SECTION À LA UNE ===== */
+    .la-une {
+        padding-top: 3rem;
+        padding-bottom: 2rem;
+    }
+    
+    .la-une .container {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+    
+    .la-une-title {
+        font-size: 42px;
+        margin-bottom: 24px;
+    }
+    
+    .la-une-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    article.featured {
+        max-width: 100%;
+    }
+    
+    .featured figure img {
+        height: 280px;
+        border-radius: 4px;
+    }
+    
+    .featured h3 {
+        font-size: 28px;
+        width: 100%;
+    }
+    
+    .featured p {
+        display: none;
+    }
+    
+    /* Cacher le badge "Exposition" sur mobile, garder uniquement "Temporaire" */
+    .featured .badge:first-of-type {
+        display: none;
+    }
+    
+    .featured .badge + .badge {
+        left: 10px;
+        transform: none;
+        margin-left: 0;
+    }
+    
+    /* Repositionner la trompe décorative sur mobile */
+    .la-une .trompe-image {
+        width: 200px;
+        bottom: auto;
+        top: 0;
+        right: -50px;
+        opacity: 0.6;
+    }
+    
+    /* Side list sur mobile - format cards verticales */
+    .side-list {
+        gap: 40px;
+    }
+    
+    .side-item {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .side-item img {
+        width: 100%;
+        height: 200px;
+        border-radius: 4px;
+    }
+    
+    .side-item .badge {
+        top: 10px;
+        left: 10px;
+    }
+    
+    .side-item .side-content {
+        padding-top: 16px;
+    }
+    
+    .side-item .side-content h3 {
+        font-size: 28px;
+        margin-bottom: 12px;
+    }
+    
+    .side-item .side-content p {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+    
+    /* ===== SECTION DÉCOUVRIR ===== */
+    .découvrir {
+        padding-top: 3rem;
+        padding-bottom: 2rem;
+    }
+    
+    .découvrir .container {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+    
+    /* Titre sur 2 lignes */
+    .decouvrir-title {
+        font-size: 48px;
+        margin-bottom: 24px;
+    }
+    
+    .decouvrir-title .decouvrir-title-line2 {
+        display: block;
+    }
+    
+    /* Grille en colonne : titre -> image -> texte */
+    .decouvrir-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .decouvrir-image img {
+        height: 200px;
+        max-width: 100%;
+    }
+    
+    /* Cacher le sous-titre "L'essentiel du Muséum" sur mobile */
+    .decouvrir-subtitle {
+        display: none;
+    }
+    
+    .decouvrir-content .lead {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    
+    /* Cacher le bouton Réservez de cette section (il y a celui des stats) */
+    .bouton-decouvrir {
+        display: none;
+    }
+    
+    /* Cacher la décoration ::before sur mobile pour cette section */
+    .découvrir .decouvrir-image::before {
+        display: none;
+    }
+    
+    /* ===== SECTION 4 - STATS & VOUS SOUHAITEZ ===== */
+    .section4 {
+        padding-top: 1rem;
+        padding-bottom: 4rem;
+    }
+    
+    /* Grille 2x2 pour les stats */
+    .stats-row {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px 16px;
+        flex-direction: unset;
+        align-items: start;
+        margin-bottom: 48px;
+    }
+    
+    /* Afficher le bouton Réservez sur mobile */
+    .stat-btn-mobile {
+        display: flex;
+        align-items: center;
+    }
+    
+    .stat {
+        min-width: unset;
+    }
+    
+    .stat-number {
+        font-size: 32px;
+        margin-bottom: 4px;
+    }
+    
+    .stat-label {
+        font-size: 18px;
+        line-height: 1.2;
+    }
+    
+    /* Vous Souhaitez */
+    .vs-title {
+        font-size: 48px !important;
+        margin-top: 60px;
+        margin-bottom: 32px;
+        line-height: 1.1;
+    }
+    
+    .vous-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    /* Cacher l'image des visiteurs sur mobile */
+    .vous-image {
+        display: none;
+    }
+    
+    .vous-list {
+        gap: 0;
+    }
+    
+    .vous-list li {
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .vous-list li:first-child {
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .vs-text {
+        font-size: 18px;
+    }
+    
+    /* Décoration trompe à gauche */
+    .vous-souhaitez::before {
+        content: "";
+        position: absolute;
+        left: -80px;
+        top: 50px;
+        width: 200px;
+        height: 300px;
+        background: url("../images/bg_symbole.png") no-repeat center/contain;
+        opacity: 0.4;
+        pointer-events: none;
+        z-index: 0;
     }
 }
